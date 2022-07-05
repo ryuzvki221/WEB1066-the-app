@@ -1,13 +1,14 @@
 language: java
-install: skip
 
 os: linux
 dist: trusty
 jdk: oraclejdk8
 
-before_script: gradle assemble
+install:
+  - TERM=dumb ./gradlew assemble
 
-script: ./gradlew build --scan -s
+script: 
+  - TERM=dumb ./gradlew check./gradlew build --scan -s
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
