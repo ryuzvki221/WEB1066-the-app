@@ -4,11 +4,15 @@ os: linux
 dist: trusty
 jdk: oraclejdk8
 
-install:
-  - TERM=dumb ./gradlew assemble
+before_install: chmod +x gradlew
 
-script: 
-  - TERM=dumb ./gradlew check./gradlew build --scan -s
+install:
+  - ./gradlew assemble
+
+before_script: ./gradlew clean build
+
+script:
+  - ./gradlew check./gradlew build --scan -s
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
