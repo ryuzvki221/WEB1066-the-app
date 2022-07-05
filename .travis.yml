@@ -1,6 +1,6 @@
 language: java
 jdk: oraclejdk8
-
+dist: trusty
 install:
   - gradle wrapper --gradle-version 4.2
 before_script:
