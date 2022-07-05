@@ -5,7 +5,7 @@ os: linux
 dist: trusty
 jdk: oraclejdk8
 
-before_script: ./gradlew assemble
+before_script: gradle assemble
 
 script: ./gradlew build --scan -s
 
