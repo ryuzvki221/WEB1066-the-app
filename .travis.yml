@@ -4,9 +4,19 @@ os: linux
 dist: trusty
 jdk: oraclejdk8
 
-install: skip
+before_install:
+  - jdk_switcher use oraclejdk8
+  - java -version
+  # Repo for Yarn
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+install:
+  - yarn install
 
-script: skip
+script:
+  - chmod +x gradlew
+  - ./gradlew clean test
+  - yarn test
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
